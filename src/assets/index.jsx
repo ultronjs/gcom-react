@@ -14,3 +14,5 @@ export { default as EAImage } from "./ea.png";
 export { default as WarnerImage } from "./warner.png";
 export { default as MarvelImage } from "./marvel.png";
 export { default as UbisoftImage } from "./ubisoft.png";
+
+export { default as LoginImage } from "./login_logo.png";

@@ -26,7 +26,7 @@ function Footer() {
             </li>
             <li className="px-x-small">
               <Link className="link_wrapper" to="/wishlist">
-                My Waitlist
+                My Wishlist
               </Link>
             </li>
           </ul>
