@@ -126,7 +126,7 @@ body{
     height: 6.25rem;
     width: 12.5rem;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
