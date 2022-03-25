@@ -8,15 +8,15 @@ import PickYourAccessories from '../components/PickYourAccessories';
 
 function Home() {
   return (
-    <div className='main_container'>
+    <div className="main_container">
       <Navbar />
       <Banner />
-      <PickYourAccessories />
       <FeaturedCategory />
+      <PickYourAccessories />
       <GamesFromBrands />
       <Footer />
     </div>
-  )
+  );
 }
 
 export default Home
