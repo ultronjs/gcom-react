@@ -57,6 +57,7 @@ body{
 }
 .form{
     background-color: white;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -91,6 +92,8 @@ body{
     width: 80%;
 }
 .input_icon{
+    display: flex;
+    justify-content: flex-end;
     position: relative;
     bottom: 1.875rem;
     padding-right: 5px;
