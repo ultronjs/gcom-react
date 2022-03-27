@@ -1,20 +1,6 @@
 import React from "react";
 
 function ProductCard({ productDetails }) {
-  // {
-  //     id: 12,
-  //     name: "PS1",
-  //     currentPrice: 50000,
-  //     mrp: 59000,
-  //     rating: 3,
-  //     discount: "20%",
-  //     outOfStock: true,
-  //     brand: "Sony",
-  //     productImg: "url",
-  //     addedToWishList: true,
-  //     isBestSeller: true,
-  //     addedToCart: false,
-  //   }
   return (
     <div className="card product_card card_with_dismiss">
       <div className="card_content">
@@ -23,20 +9,21 @@ function ProductCard({ productDetails }) {
           src={productDetails.productImg}
           alt=""
         />
-        {productDetails.addedToWishList ? (
+        <i className="far fa-heart fa-lg card_dismiss card_product_heart position_absolute right-10 top-20"></i>
+        {/* {productDetails.addedToWishList ? (
           <i className="fas fa-heart fa-lg card_dismiss card_product_heart_filled position_absolute right-10 top-20"></i>
         ) : (
           <i className="far fa-heart fa-lg card_dismiss card_product_heart position_absolute right-10 top-20"></i>
-        )}
+        )} */}
 
         {productDetails.isBestSeller ? (
           <span className="badge badge_warning position_absolute left-0 top-20">
             Best Seller
           </span>
         ) : (
-          <span class="badge badge_warning position_absolute left-0 top-20">
+          <span className="badge badge_warning position_absolute left-0 top-20">
             {productDetails.rating}
-            <i class="fas fa-star"></i>
+            <i className="fas fa-star"></i>
           </span>
         )}
 
@@ -54,13 +41,14 @@ function ProductCard({ productDetails }) {
       </div>
       <div className="card_actions flex-center">
         <div className="card_button_action">
-          {productDetails.addedToCart ? (
+          <button className="btn btn_primary_outline">ADD TO CART</button>
+          {/* {productDetails.addedToCart ? (
             <button className="btn btn_primary_outline">ADD TO CART</button>
           ) : (
             <button className="btn btn_primary_outline">
-              REMOVE FROM THE CART
+              GO TO CART
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </div>
