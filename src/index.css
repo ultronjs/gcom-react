@@ -297,6 +297,10 @@ ul{
     .nav_left_side span{
         display: none;
     }
+    .card_content_image{
+        height: 25px;
+        width: 25px;
+    }
     .card_content_image_horizontal{
         width: 60%;
     }
