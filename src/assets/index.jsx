@@ -16,3 +16,7 @@ export { default as MarvelImage } from "./marvel.png";
 export { default as UbisoftImage } from "./ubisoft.png";
 
 export { default as LoginImage } from "./login_logo.png";
+export {default as CardImage} from "./card_image.png"
+
+export { default as boatHeadset } from "./boat_headset.jpg";
+export { default as elgatoGameCapture } from "./Elgato_Game_Capture.jpg";

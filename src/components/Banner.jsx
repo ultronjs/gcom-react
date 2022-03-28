@@ -5,7 +5,9 @@ import { BannerImage } from "../assets";
 
 function Banner() {
   return (
-    <img className="home_banner" src={BannerImage} alt="" />
+    <Link to="/products">
+      <img className="home_banner" src={BannerImage} alt="" />
+    </Link>
   );
 }
 
