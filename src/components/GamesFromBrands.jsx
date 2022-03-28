@@ -2,15 +2,47 @@ import "../index.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import {SonyImage,RockStarImage,EAImage,WarnerImage,MarvelImage,Ubisoft, UbisoftImage} from "../assets"
+import { useFilter } from "../context/FilterContext";
 
 function GamesFromBrands() {
+  const { dispatch } = useFilter()
   const brands = [
-    { name: "Sony", linkTo: "/products", imgSrc: SonyImage },
-    { name: "RockStar", linkTo: "/products", imgSrc: RockStarImage },
-    { name: "EA", linkTo: "/products", imgSrc: EAImage },
-    { name: "Warner", linkTo: "/products", imgSrc: WarnerImage },
-    { name: "Marvel", linkTo: "/products", imgSrc: MarvelImage },
-    { name: "Ubisoft", linkTo: "/products", imgSrc: UbisoftImage },
+    {
+      name: "Sony",
+      value: "Sony",
+      linkTo: "/products",
+      imgSrc: SonyImage,
+    },
+    {
+      name: "RockStar",
+      value: "RockStar",
+      linkTo: "/products",
+      imgSrc: RockStarImage,
+    },
+    {
+      name: "EA",
+      value: "EA",
+      linkTo: "/products",
+      imgSrc: EAImage,
+    },
+    {
+      name: "Warner",
+      value: "Warner Bros",
+      linkTo: "/products",
+      imgSrc: WarnerImage,
+    },
+    {
+      name: "Marvel",
+      value: "Marvel",
+      linkTo: "/products",
+      imgSrc: MarvelImage,
+    },
+    {
+      name: "Ubisoft",
+      value: "Ubisoft",
+      linkTo: "/products",
+      imgSrc: UbisoftImage,
+    },
   ];
   return (
     <div>
@@ -19,7 +51,15 @@ function GamesFromBrands() {
         {brands &&
           brands.map((element) => (
             <Link className="link_wrapper" to={element.linkTo}>
-              <div className="card_featured_category">
+              <div
+                className="card_featured_category"
+                onClick={() =>
+                  dispatch({
+                    type: "sortByBrands",
+                    payload: element.value,
+                  })
+                }
+              >
                 <img src={element.imgSrc} />
               </div>
             </Link>

@@ -10,43 +10,58 @@ import {
   casesAndCoversImage,
   internationBrandsImage,
 } from "../assets";
+import { useFilter } from "../context/FilterContext";
 
 function PickYourAccessories() {
+  const { dispatch } = useFilter()
   const accessories = [
-    { 
-        name: "Controller", 
-        linkTo: "/", 
-        src: controllerImage },
-    { 
-        name: "Headset", 
-        linkTo: "/", 
-        src: headsetImage },
-    { 
-        name: "Racing Wheel", 
-        linkTo: "/", 
-        src: racingWheelImage },
     {
-        name: "Streaming Devices",
-        linkTo: "/",
-        src: streamingDevicesImage,
-    },
-    { 
-        name: "VR", 
-        linkTo: "/", 
-        src: vrImage },
-    { 
-        name: "Thumb Grips", 
-        linkTo: "/", 
-        src: thumbGripsImage },
-    {
-        name: "Cases and Covers",
-        linkTo: "/",
-        src: casesAndCoversImage,
+      name: "Controller",
+      value: "Controller",
+      linkTo: "/products",
+      src: controllerImage,
     },
     {
-        name: "International Brands",
-        linkTo: "/",
-        src: internationBrandsImage,
+      name: "Headset",
+      value: "Headset",
+      linkTo: "/products",
+      src: headsetImage,
+    },
+    {
+      name: "Racing Wheel",
+      value: "Racing Wheel",
+      linkTo: "/products",
+      src: racingWheelImage,
+    },
+    {
+      name: "Streaming Devices",
+      value: "Streaming Devices",
+      linkTo: "/products",
+      src: streamingDevicesImage,
+    },
+    {
+      name: "VR",
+      value: "VR",
+      linkTo: "/products",
+      src: vrImage,
+    },
+    {
+      name: "Thumb Grips",
+      value: "Thumb Grips",
+      linkTo: "/products",
+      src: thumbGripsImage,
+    },
+    {
+      name: "Cases and Covers",
+      value: "Thumb Grips",
+      linkTo: "/products",
+      src: casesAndCoversImage,
+    },
+    {
+      name: "International Brands",
+      value: "International Brands",
+      linkTo: "/products",
+      src: internationBrandsImage,
     },
   ];
   return (
@@ -56,7 +71,15 @@ function PickYourAccessories() {
         {accessories &&
           accessories.map((element) => (
             <Link className="link_wrapper" to={element.linkTo}>
-              <div className="card card_container_pick_your_accessories px-x-small">
+              <div
+                className="card card_container_pick_your_accessories px-x-small"
+                onClick={() =>
+                  dispatch({
+                    type: "sortByAccessoriesType",
+                    payload: element.value,
+                  })
+                }
+              >
                 <img className="img_responsive" src={element.src} />
               </div>
             </Link>
