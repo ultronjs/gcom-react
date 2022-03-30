@@ -120,6 +120,9 @@ ul{
     width: 19rem;
     height: 23rem;
 }
+.wishList_Card{
+    height: 23rem;
+}
 
 .container_featured_category,.container_games_from_top_brands{
     display: flex;
@@ -172,6 +175,9 @@ ul{
 .card_product_heart_filled{
   color: var(--pink);
 }
+.card_product_heart_filled:hover{
+  background-color: transparent
+}
 .text_crossed{
     text-decoration:line-through;
 }
@@ -206,12 +212,11 @@ ul{
     height: fit-content;
 }
 .card_content_horizontal{
-    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
-.card_actions_horizontal{
-    flex-basis: 10%;
+.card_content_body_horizontal{
+    flex-basis: 60%;
 }
 .cart_total_amount{
     border-top:1px solid var(--grey-color-200)
@@ -233,6 +238,9 @@ ul{
 .card_wishlist_heart:hover{
     color: var(--white);
     background-color:transparent;
+}
+.grid-jc-center{
+    justify-content: center;
 }
 
 /*Footer Custom CSS*/

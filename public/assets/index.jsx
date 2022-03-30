@@ -20,3 +20,5 @@ export {default as CardImage} from "./card_image.png"
 
 export { default as boatHeadset } from "./boat_headset.jpg";
 export { default as elgatoGameCapture } from "./Elgato_Game_Capture.jpg";
+export {default as emptyCart} from "./empty_cart.png"
+export {default as wishListImage} from "./empty_wishlist.png"

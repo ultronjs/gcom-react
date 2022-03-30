@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from './ProductCard';
-import axios from 'axios'
 import { getFilteredData } from "../utils/filter";
 import { useFilter } from "../context/FilterContext";
 import { products } from "../backend/db/products";
+import { publicInstance } from "../utils/axios";
 
 function ProductContainer() {
     const [product,setProduct] = useState([])
@@ -12,8 +12,8 @@ function ProductContainer() {
     useEffect(()=>{
       (async function (){
         try{
-        const {products} = await axios.get(
-          "/api/products").then(response => response.data);
+        const {products} = await publicInstance.get(
+          "/products").then(response => response.data);
           console.log(products)
           setProduct(products)
           setFilteredData(getFilteredData(state,products));

@@ -1,7 +1,6 @@
 import "../index.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import {SonyImage,RockStarImage,EAImage,WarnerImage,MarvelImage,Ubisoft, UbisoftImage} from "../assets"
 import { useFilter } from "../context/FilterContext";
 
 function GamesFromBrands() {
@@ -11,37 +10,37 @@ function GamesFromBrands() {
       name: "Sony",
       value: "Sony",
       linkTo: "/products",
-      imgSrc: SonyImage,
+      imgSrc: "/assets/sony (1).png",
     },
     {
       name: "RockStar",
       value: "RockStar",
       linkTo: "/products",
-      imgSrc: RockStarImage,
+      imgSrc: "/assets/rockstar.png",
     },
     {
       name: "EA",
       value: "EA",
       linkTo: "/products",
-      imgSrc: EAImage,
+      imgSrc: "/assets/ea.png",
     },
     {
       name: "Warner",
       value: "Warner Bros",
       linkTo: "/products",
-      imgSrc: WarnerImage,
+      imgSrc: "/assets/warner.png",
     },
     {
       name: "Marvel",
       value: "Marvel",
       linkTo: "/products",
-      imgSrc: MarvelImage,
+      imgSrc: "/assets/marvel.png",
     },
     {
       name: "Ubisoft",
       value: "Ubisoft",
       linkTo: "/products",
-      imgSrc: UbisoftImage,
+      imgSrc: "/assets/ubisoft.png",
     },
   ];
   return (

@@ -1,8 +1,12 @@
 import "../index.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart,useWishList } from "../context";
+import WishList from "../pages/WishList";
 
 export default function Nav() {
+  const {cart} = useCart()
+  const {wishList} = useWishList()
   return (
     <nav className="navbar">
       <div className="nav_left_side flex flex-center gap-s">
@@ -22,17 +26,21 @@ export default function Nav() {
         <Link className="link_wrapper" to="/wishlist">
           <span className="badge_wrapper">
             <i className="fas fa-heart fa-2x"></i>
-            <span className="badge badge_circle badge_primary position_absolute right-0 top-0">
-              4
-            </span>
+            {wishList.length > 0 && (
+              <span className="badge badge_circle badge_primary position_absolute right-0 top-0">
+                {wishList.length}
+              </span>
+            )}
           </span>
         </Link>
         <Link className="link_wrapper" to="/cart">
           <span className="badge_wrapper">
             <i className="fas fa-shopping-cart fa-2x"></i>
-            <span className="badge badge_circle badge_primary position_absolute right-0 top-0">
-              4
-            </span>
+            {cart.length > 0 && (
+              <span className="badge badge_circle badge_primary position_absolute right-0 top-0">
+                {cart.length}
+              </span>
+            )}
           </span>
         </Link>
       </div>
