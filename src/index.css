@@ -206,12 +206,11 @@ ul{
     height: fit-content;
 }
 .card_content_horizontal{
-    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
-.card_actions_horizontal{
-    flex-basis: 10%;
+.card_content_body_horizontal{
+    flex-basis: 60%;
 }
 .cart_total_amount{
     border-top:1px solid var(--grey-color-200)

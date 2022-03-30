@@ -1,8 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "../context/cartContext";
 
 function ProductCard({ productDetails }) {
+  const { cartDispatch, postCartData } = useCart();
+
   return (
-    <div className="card product_card card_with_dismiss">
+    <div
+      key={productDetails._id}
+      className="card product_card card_with_dismiss"
+    >
       <div className="card_content">
         <img
           className="card_content_image"
@@ -41,9 +48,27 @@ function ProductCard({ productDetails }) {
       <div className="card_actions flex-center">
         <div className="card_button_action">
           {productDetails.addedToCart ? (
-            <button className="btn btn_primary_outline">GO TO CART</button>
+            <Link to="/cart">
+            <button
+              className="btn btn_primary_outline"
+            >
+              GO TO CART
+            </button>
+            </Link>
           ) : (
-            <button className="btn btn_primary_outline">ADD TO CART</button>
+            <button
+              onClick={() => {
+                productDetails.addedToCart = true;
+                postCartData(productDetails)
+                cartDispatch({
+                  type: "ADD_TO_CART",
+                  payload: productDetails,
+                });
+              }}
+              className="btn btn_primary_outline"
+            >
+              ADD TO CART
+            </button>
           )}
         </div>
       </div>

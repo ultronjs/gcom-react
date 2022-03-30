@@ -1,8 +1,10 @@
 import "../index.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/cartContext";
 
 export default function Nav() {
+  const {cart} =useCart()
   return (
     <nav className="navbar">
       <div className="nav_left_side flex flex-center gap-s">
@@ -31,7 +33,7 @@ export default function Nav() {
           <span className="badge_wrapper">
             <i className="fas fa-shopping-cart fa-2x"></i>
             <span className="badge badge_circle badge_primary position_absolute right-0 top-0">
-              4
+              {cart.length}
             </span>
           </span>
         </Link>
