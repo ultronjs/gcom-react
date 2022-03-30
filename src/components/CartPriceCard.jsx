@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCart } from '../context/cartContext';
+import { formatCurreny } from '../utils/format';
 
 function CartPriceCard() {
   const { cart,getPriceForPriceCard } = useCart ()
@@ -13,11 +14,11 @@ function CartPriceCard() {
       </div>
       <div className="flex flex-row flex-jc-space-between mx-x-small mb-x-small px-x-small">
         <span>Total MRP</span>
-        <span>{getTotalMrp}</span>
+        <span>{formatCurreny(getTotalMrp)}</span>
       </div>
       <div className="flex flex-row flex-jc-space-between mx-x-small mb-x-small px-x-small">
         <span>Discount on MRP</span>
-        <span>-{getTotalDiscount}</span>
+        <span>-{formatCurreny(getTotalDiscount)}</span>
       </div>
       <div className="flex flex-row flex-jc-space-between mx-x-small mb-x-small px-x-small">
         <span>Coupon Discount</span>
@@ -25,11 +26,11 @@ function CartPriceCard() {
       </div>
       <div className="flex flex-row flex-jc-space-between mx-x-small mb-x-small px-x-small">
         <span>Delivery Fee</span>
-        <span className="text_crossed">+{getDeliveryPrice}</span>
+        <span className="text_crossed">+{formatCurreny(getDeliveryPrice)}</span>
       </div>
       <div className="flex flex-row flex-jc-space-between m-x-small pt-x-small cart_total_amount px-x-small">
         <span>Total Amount</span>
-        <span>{getTotalMrp-getTotalDiscount}</span>
+        <span>{formatCurreny(getTotalMrp - getTotalDiscount)}</span>
       </div>
       <button className="btn btn_primary fw-semibold mx-x-small">
         Place Order

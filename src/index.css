@@ -120,6 +120,9 @@ ul{
     width: 19rem;
     height: 23rem;
 }
+.wishList_Card{
+    height: 23rem;
+}
 
 .container_featured_category,.container_games_from_top_brands{
     display: flex;
@@ -171,6 +174,9 @@ ul{
 }
 .card_product_heart_filled{
   color: var(--pink);
+}
+.card_product_heart_filled:hover{
+  background-color: transparent
 }
 .text_crossed{
     text-decoration:line-through;
@@ -232,6 +238,9 @@ ul{
 .card_wishlist_heart:hover{
     color: var(--white);
     background-color:transparent;
+}
+.grid-jc-center{
+    justify-content: center;
 }
 
 /*Footer Custom CSS*/

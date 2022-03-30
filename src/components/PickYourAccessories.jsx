@@ -1,15 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  controllerImage,
-  headsetImage,
-  racingWheelImage,
-  streamingDevicesImage,
-  vrImage,
-  thumbGripsImage,
-  casesAndCoversImage,
-  internationBrandsImage,
-} from "../assets";
 import { useFilter } from "../context/FilterContext";
 
 function PickYourAccessories() {
@@ -19,49 +9,49 @@ function PickYourAccessories() {
       name: "Controller",
       value: "Controller",
       linkTo: "/products",
-      src: controllerImage,
+      src: "/assets/controller.jpg",
     },
     {
       name: "Headset",
       value: "Headset",
       linkTo: "/products",
-      src: headsetImage,
+      src: "/assets/headset.jpg",
     },
     {
       name: "Racing Wheel",
       value: "Racing Wheel",
       linkTo: "/products",
-      src: racingWheelImage,
+      src: "/assets/racing_wheels.jpg",
     },
     {
       name: "Streaming Devices",
       value: "Streaming Devices",
       linkTo: "/products",
-      src: streamingDevicesImage,
+      src: "/assets/streaming_devices.jpg",
     },
     {
       name: "VR",
       value: "VR",
       linkTo: "/products",
-      src: vrImage,
+      src: "/assets/vr.jpg",
     },
     {
       name: "Thumb Grips",
       value: "Thumb Grips",
       linkTo: "/products",
-      src: thumbGripsImage,
+      src: "/assets/thumb_grips.jpg",
     },
     {
       name: "Cases and Covers",
-      value: "Thumb Grips",
+      value: "Cases and Covers",
       linkTo: "/products",
-      src: casesAndCoversImage,
+      src: "/assets/cases_and_covers.jpg",
     },
     {
       name: "International Brands",
       value: "International Brands",
       linkTo: "/products",
-      src: internationBrandsImage,
+      src: "/assets/international_brands.jpg",
     },
   ];
   return (

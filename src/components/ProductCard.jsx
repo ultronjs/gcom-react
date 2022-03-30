@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../context/cartContext";
+import { useCart,useWishList } from "../context/";
+import { formatCurreny } from "../utils/format";
 
 function ProductCard({ productDetails }) {
   const { cartDispatch, postCartData } = useCart();
+  const { postWishListData,deleteWishListData } = useWishList();
 
   return (
     <div
@@ -17,9 +19,21 @@ function ProductCard({ productDetails }) {
           alt=""
         />
         {productDetails.addedToWishList ? (
-          <i className="fas fa-heart fa-lg card_dismiss card_product_heart_filled position_absolute right-10 top-20"></i>
+          <i
+            onClick={() => {
+              productDetails.addedToWishList = false;
+              deleteWishListData(productDetails._id);
+            }}
+            className="fas fa-heart fa-lg card_dismiss card_product_heart_filled position_absolute right-10 top-20"
+          ></i>
         ) : (
-          <i className="far fa-heart fa-lg card_dismiss card_product_heart position_absolute right-10 top-20"></i>
+          <i
+            onClick={() => {
+              productDetails.addedToWishList = true;
+              postWishListData(productDetails);
+            }}
+            className="far fa-heart fa-lg card_dismiss card_product_heart position_absolute right-10 top-20"
+          ></i>
         )}
 
         {productDetails.isBestSeller ? (
@@ -36,9 +50,13 @@ function ProductCard({ productDetails }) {
         <div className="card_content_header">
           <div className="primary_header">{productDetails.name}</div>
           <div className="secondary_header">By {productDetails.brand}</div>
-          <div className="fs-s">Rs {productDetails.currentPrice}</div>
+          <div className="fs-s">
+            {formatCurreny(productDetails.currentPrice)}
+          </div>
           <div>
-            <span className="fs-xs text_crossed">Rs {productDetails.mrp}</span>
+            <span className="fs-xs text_crossed">
+              {formatCurreny(productDetails.mrp)}
+            </span>
             <span className="fs-xs color_grey_200">
               {productDetails.discount}% off
             </span>
@@ -49,21 +67,13 @@ function ProductCard({ productDetails }) {
         <div className="card_button_action">
           {productDetails.addedToCart ? (
             <Link to="/cart">
-            <button
-              className="btn btn_primary_outline"
-            >
-              GO TO CART
-            </button>
+              <button className="btn btn_primary_outline">GO TO CART</button>
             </Link>
           ) : (
             <button
               onClick={() => {
                 productDetails.addedToCart = true;
-                postCartData(productDetails)
-                cartDispatch({
-                  type: "ADD_TO_CART",
-                  payload: productDetails,
-                });
+                postCartData(productDetails);
               }}
               className="btn btn_primary_outline"
             >

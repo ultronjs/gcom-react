@@ -1,34 +1,51 @@
 import { createContext, useContext, useReducer, useState,useEffect } from "react";
 import { privateInstance, publicInstance } from "../utils/axios";
+import { cartReducer } from "../reducers";
 
 const CartContext = createContext()
 
 
 const CartProvider = ({children}) => {
     const getCartData = async () => {
-        console.log("i m getting triggered")
-    return await privateInstance
+    const {status,data} =  await privateInstance
       .get("/user/cart")
-      .then(response => cartDispatch({type:"SET_DATA",payload:response.data.cart}))};
-
+      if(status===200) 
+      cartDispatch({type:"SET_DATA",payload:data.cart})
+      else
+      console.error("Not getting the Cart Data",status)
+    };
     const postCartData = async (product) => {
-        console.log("i m here posting" ,{...product,quantity:1})
-        return await privateInstance({
+        console.log("i m here posting" ,product)
+        const {status,data}= await privateInstance({
             method: "post",
             url: "/user/cart",
             data: {
                 product
-            }}).then(response=>console.log(response));
+            }});
+        if(status===201){
+            cartDispatch({type:"ADD_TO_CART",payload:product})
+            return data.cart}
+        else
+        console.error("Not able to Post Cart Data",status)
     };
     const deleteCartData = async (id) => {
-        return await privateInstance({
-            method: "delete",
-            url: `/user/cart/:${id}`,
-    }).then(response=>console.log(response))};
-    
+        try{
+            const { status, data } = await privateInstance({
+                method: "delete",
+                url: `/user/cart/:${id}`,
+            })
+            console.log(data)
+            if(status===200){
+                cartDispatch({type:"REMOVE_FROM_CART",payload:id})
+                return data.cart
+            }
+        }catch(error){
+            console.error(error)
+           }
+    }
     const increaseQuantity = async (id) => {
         console.log("i am increasing quantity")
-        return await privateInstance({
+        const { status, data } = await privateInstance({
           method: "post",
           url: `/user/cart/:${id}`,
           data: {
@@ -36,18 +53,17 @@ const CartProvider = ({children}) => {
               type: "increment"
             },
           },
-        }).then((response) =>
-          {
-            console.log(response)
-            cartDispatch({
-            type: "INCREASAE_QUANTITY",
-            payload: response.data.cart,
-          })}
-        );
+        })
+        if(status ===200){
+            console.log(data)
+            cartDispatch({ type: "INCREASAE_QUANTITY", payload: id });
+            return data.cart;
+        }
+        else
+        console.error("Not able to Increase the Cart Item Quantity");
     }
-
     const decreaseQuantity = async (id) => {
-      return await privateInstance({
+      const { status, data } = await privateInstance({
         method: "post",
         url: `/user/cart/:${id}`,
         data: {
@@ -55,38 +71,16 @@ const CartProvider = ({children}) => {
             type: "decrement"
           },
         },
-      }).then((response) =>
-        cartDispatch({
-          type: "DECREASE_QUANTITY",
-          payload: response.data.cart,
-        })
-      );;
+      })
+      if(status ===200){
+        cartDispatch({ type: "DECREASE_QUANTITY", payload: id });
+        return data.cart;
+      }
+      else
+      
+        console.error("Not able to Decrease the Cart Item Quantity");
     };
 
-    const cartReducer = (cart, action) => {
-      switch (action.type) {
-        case "SET_DATA":
-          return [...action.payload]
-        case "ADD_TO_CART":
-          return [...cart, action.payload];
-        case "REMOVE_FROM_CART":
-          const response = deleteCartData(action.payload)
-          console.log("gggg",response)
-          return [
-            ...cart.filter((element) => element._id !== action.payload),
-          ];
-        case "INCREASAE_QUANTITY":
-            return [
-              ...cart
-            ];
-        case "DECREASE_QUANTITY":
-             return [
-               ...cart
-             ];
-        default:
-          return [...cart];
-      }
-    };
     const [cart, cartDispatch] = useReducer(cartReducer, []);
     
 
@@ -106,9 +100,9 @@ const CartProvider = ({children}) => {
       <CartContext.Provider
         value={{
           cart,
-          cartDispatch,
           postCartData,
           getCartData,
+          deleteCartData,
           increaseQuantity,
           decreaseQuantity,
           getPriceForPriceCard,
