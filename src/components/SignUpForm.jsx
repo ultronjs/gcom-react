@@ -58,7 +58,7 @@ function SignUpForm() {
           <div className="form_header">
             <span className="h2 text_center">Sign Up</span>
             <span>
-              Already have a account ?<Link to="/signin">Log In</Link>
+              Already have a account ?<Link to="/login">Log In</Link>
             </span>
           </div>
           <div className="input_group">
