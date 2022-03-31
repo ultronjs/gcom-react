@@ -6,7 +6,7 @@ function WishListCardContainer() {
     const {wishList} = useWishList()
 
   return (
-    <div class="product_grid grid-jc-center">
+    <div className="product_grid grid-jc-center">
       {wishList &&
         wishList.map((element) => <WishListCard wishListDetails={element} />)}
     </div>

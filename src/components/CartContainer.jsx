@@ -7,7 +7,6 @@ import EmptyCart from './EmptyCart';
 function CartContainer() {
   const { cart, getCartData } = useCart();
   useEffect(() => {
-    console.log("useEffect");
     getCartData();
   }, []);
   return (

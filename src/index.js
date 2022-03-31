@@ -4,22 +4,26 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import {BrowserRouter} from "react-router-dom"
-import { FilterProvider,CartProvider,WishListProvider } from "./context";
+import { FilterProvider,CartProvider,WishListProvider, AuthProvider, ToastProvider } from "./context";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <FilterProvider>
-      <CartProvider>
-        <WishListProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </WishListProvider>
-      </CartProvider>
-    </FilterProvider>
+    <ToastProvider>
+      <FilterProvider>
+        <AuthProvider>
+          <CartProvider>
+            <WishListProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </WishListProvider>
+          </CartProvider>
+        </AuthProvider>
+      </FilterProvider>
+    </ToastProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

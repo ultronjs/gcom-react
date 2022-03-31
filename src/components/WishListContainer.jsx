@@ -16,7 +16,7 @@ function WishListContainer() {
       ) : (
         <div className="main_container flex flex-col m-small">
           <div className="flex flex-col flex-ai-center">
-            <span class="h2">My Wishlist</span>
+            <span className="h2">My Wishlist</span>
             <span>{wishList.length} Items</span>
           </div>
           <WishListCardContainer />

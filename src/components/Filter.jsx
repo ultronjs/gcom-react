@@ -102,7 +102,7 @@ function Filter() {
           type: "range",
           name: "priceRange",
           min: "0",
-          max: "100000",
+          max: "70000",
           value: value,
           step: "1000",
         },
@@ -224,7 +224,6 @@ function Filter() {
            <h3>Category</h3>
            {filter.category &&
              filter.category.map((element) => {
-               if (element.value === state.category) {
                  return (
                    <li>
                      <input
@@ -233,32 +232,17 @@ function Filter() {
                        name={element.name}
                        value={element.value}
                        onChange={changeFilter}
-                       checked
+                       checked={element.value === state.category}
                      />
                      {element.title}
                    </li>
                  );
-               } else {
-                 return (
-                   <li>
-                     <input
-                       key={element.name}
-                       type={element.type}
-                       name={element.name}
-                       value={element.value}
-                       onChange={changeFilter}
-                     />
-                     {element.title}
-                   </li>
-                 );
-               }
              })}
          </ul>
          <ul className="non_bullet_list">
            <h3>Sort By Price</h3>
            {filter.sortByPrice &&
              filter.sortByPrice.map((element) => {
-               if (element.value === state.sortByPrice) {
                  return (
                    <li>
                      <input
@@ -267,32 +251,17 @@ function Filter() {
                        name={element.name}
                        value={element.value}
                        onChange={changeFilter}
-                       checked
+                       checked={element.value === state.sortByPrice}
                      />
                      {element.title}
                    </li>
                  );
-               } else {
-                 return (
-                   <li>
-                     <input
-                       key={element.name}
-                       type={element.type}
-                       name={element.name}
-                       value={element.value}
-                       onChange={changeFilter}
-                     />
-                     {element.title}
-                   </li>
-                 );
-               }
              })}
          </ul>
          <ul className="non_bullet_list">
            <h3>Sort By Rating</h3>
            {filter.sortByRating &&
-             filter.sortByRating.map((element) => {
-               if (element.value === state.sortByRating) {
+             filter.sortByRating.map((element) => {           
                  return (
                    <li>
                      <input
@@ -301,32 +270,17 @@ function Filter() {
                        name={element.name}
                        value={element.value}
                        onChange={changeFilter}
-                       checked
+                       checked={element.value === state.sortByRating}
                      />
                      {element.title}
                    </li>
                  );
-               } else {
-                 return (
-                   <li>
-                     <input
-                       key={element.name}
-                       type={element.type}
-                       name={element.name}
-                       value={element.value}
-                       onChange={changeFilter}
-                     />
-                     {element.title}
-                   </li>
-                 );
-               }
              })}
          </ul>
          <ul className="non_bullet_list">
            <h3>Sort By Discount</h3>
            {filter.sortByDiscount &&
              filter.sortByDiscount.map((element) => {
-               if (element.value === state.sortByDiscount) {
                  return (
                    <li>
                      <input
@@ -335,33 +289,19 @@ function Filter() {
                        name={element.name}
                        value={element.value}
                        onChange={changeFilter}
-                       checked
+                       checked={element.value === state.sortByDiscount}
                      />
                      {element.title}
                    </li>
                  );
-               } else {
-                 return (
-                   <li>
-                     <input
-                       key={element.name}
-                       type={element.type}
-                       name={element.name}
-                       value={element.value}
-                       onChange={changeFilter}
-                     />
-                     {element.title}
-                   </li>
-                 );
-               }
-             })}
+               })}
          </ul>
          <ul className="non_bullet_list">
            <h3>Price Range</h3>
            {filter.priceRange &&
              filter.priceRange.map((element) => {
                return (
-                 <li className="flex">
+                 <li className="flex flex-col">
                    <input
                      key={element.name}
                      type={element.type}
@@ -372,7 +312,7 @@ function Filter() {
                      value={value}
                      onChange={rangeHanlder}
                    />
-                   <span>{value}</span>
+                   <span>Range:{value}</span>
                  </li>
                );
              })}
@@ -381,7 +321,6 @@ function Filter() {
            <h3>Sort By Accessories Type</h3>
            {filter.sortByAccessoriesType &&
              filter.sortByAccessoriesType.map((element) => {
-               if (element.value === state.sortByAccessoriesType) {
                  return (
                    <li>
                      <input
@@ -390,32 +329,17 @@ function Filter() {
                        name={element.name}
                        value={element.value}
                        onChange={changeFilter}
-                       checked
+                       checked={element.value === state.sortByAccessoriesType}
                      />
                      {element.title}
                    </li>
                  );
-               } else {
-                 return (
-                   <li>
-                     <input
-                       key={element.name}
-                       type={element.type}
-                       name={element.name}
-                       value={element.value}
-                       onChange={changeFilter}
-                     />
-                     {element.title}
-                   </li>
-                 );
-               }
              })}
          </ul>
          <ul className="non_bullet_list">
            <h3>Brands</h3>
            {filter.sortByBrands &&
              filter.sortByBrands.map((element) => {
-               if (element.value === state.sortByBrands) {
                  return (
                    <li>
                      <input
@@ -424,25 +348,12 @@ function Filter() {
                        name={element.name}
                        value={element.value}
                        onChange={changeFilter}
-                       checked
+                       checked={element.value === state.sortByBrands}
                      />
                      {element.title}
                    </li>
                  );
-               } else {
-                 return (
-                   <li>
-                     <input
-                       key={element.name}
-                       type={element.type}
-                       name={element.name}
-                       value={element.value}
-                       onChange={changeFilter}
-                     />
-                     {element.title}
-                   </li>
-                 );
-               }
+               
              })}
          </ul>
        </aside>

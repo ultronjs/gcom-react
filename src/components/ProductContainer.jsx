@@ -14,7 +14,6 @@ function ProductContainer() {
         try{
         const {products} = await publicInstance.get(
           "/products").then(response => response.data);
-          console.log(products)
           setProduct(products)
           setFilteredData(getFilteredData(state,products));
         }catch(err){
@@ -26,7 +25,6 @@ function ProductContainer() {
       setFilteredData(getFilteredData(state, product));
     },[state])
 
-    console.log(filteredData)
 
   return (
     <div className="product_grid py-small">

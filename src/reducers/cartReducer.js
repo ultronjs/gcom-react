@@ -8,19 +8,11 @@ export const cartReducer = (cart, action) => {
       return [...cart.filter((element) => element._id !== action.payload)];
     case "INCREASAE_QUANTITY":
       return [
-        ...cart.filter((element) =>
-          element._id === action.payload
-            ? { ...element, qty: element.qty + 1 }
-            : { ...element }
-        ),
+        ...action.payload
       ];
     case "DECREASE_QUANTITY":
       return [
-        ...cart.filter((element) =>
-          element._id === action.payload
-            ? { ...element, qty: element.qty - 1 }
-            : { ...element }
-        ),
+        ...action.payload
       ];
     default:
       return [...cart];

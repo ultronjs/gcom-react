@@ -1,11 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart,useWishList } from "../context/";
+import { useWishList,useAuth,useToast,useCart } from "../context/";
 import { formatCurreny } from "../utils/format";
 
 function ProductCard({ productDetails }) {
-  const { cartDispatch, postCartData } = useCart();
+  const {  postCartData } = useCart();
   const { postWishListData,deleteWishListData } = useWishList();
+  const { signInStatus } = useAuth();
+  const { addToast } = useToast();
+  const wishListToast = () => {
+    addToast({ type: "Info", msg: "Login to Access WishList" });
+  };
+  const cartToast = () => {
+    addToast({ type: "Info", msg: "Login to Access Cart" });
+  };
 
   return (
     <div
@@ -21,16 +29,20 @@ function ProductCard({ productDetails }) {
         {productDetails.addedToWishList ? (
           <i
             onClick={() => {
-              productDetails.addedToWishList = false;
-              deleteWishListData(productDetails._id);
+                productDetails.addedToWishList = false;
+                deleteWishListData(productDetails._id);
+              
             }}
             className="fas fa-heart fa-lg card_dismiss card_product_heart_filled position_absolute right-10 top-20"
           ></i>
         ) : (
           <i
             onClick={() => {
-              productDetails.addedToWishList = true;
-              postWishListData(productDetails);
+              if (signInStatus.status) {
+                postWishListData(productDetails);
+              } else {
+                wishListToast();
+              }
             }}
             className="far fa-heart fa-lg card_dismiss card_product_heart position_absolute right-10 top-20"
           ></i>
@@ -72,8 +84,11 @@ function ProductCard({ productDetails }) {
           ) : (
             <button
               onClick={() => {
-                productDetails.addedToCart = true;
-                postCartData(productDetails);
+                if (signInStatus.status) {
+                  postCartData(productDetails);
+                } else {
+                  cartToast();
+                }
               }}
               className="btn btn_primary_outline"
             >

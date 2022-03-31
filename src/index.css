@@ -96,10 +96,11 @@ ul{
 }
 .input_icon{
     display: flex;
-    justify-content: flex-end;
+    margin-left: auto;
     position: relative;
     bottom: 1.875rem;
     padding-right: 5px;
+    cursor: pointer;
 }
 
 /*Homepage Styling*/
@@ -241,6 +242,12 @@ ul{
 }
 .grid-jc-center{
     justify-content: center;
+}
+.toast_rightside{
+    position: fixed;
+    right: 10px;
+    top: 6rem;
+    z-index: 1;
 }
 
 /*Footer Custom CSS*/
