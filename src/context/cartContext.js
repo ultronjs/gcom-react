@@ -1,21 +1,29 @@
 import { createContext, useContext, useReducer, useState,useEffect } from "react";
-import { privateInstance, publicInstance } from "../utils/axios";
+import { privateInstance } from "../utils/axios";
 import { cartReducer } from "../reducers";
+import { useToast } from "./toastContext";
 
 const CartContext = createContext()
 
 
 const CartProvider = ({children}) => {
+    const {addToast} = useToast()
+
     const getCartData = async () => {
-    const {status,data} =  await privateInstance
-      .get("/user/cart")
-      if(status===200) 
-      cartDispatch({type:"SET_DATA",payload:data.cart})
-      else
-      console.error("Not getting the Cart Data",status)
+      try{
+        const {status,data} =  await privateInstance.get("/user/cart")
+        if(status===200) 
+          cartDispatch({type:"SET_DATA",payload:data.cart})
+        }catch(error){
+          addToast({
+            type: "Error",
+            msg: "Unable to Fetch Data from API",
+          });
+          console.error(error)
+        }
     };
     const postCartData = async (product) => {
-        console.log("i m here posting" ,product)
+      try{
         const {status,data}= await privateInstance({
             method: "post",
             url: "/user/cart",
@@ -23,31 +31,45 @@ const CartProvider = ({children}) => {
                 product
             }});
         if(status===201){
-            cartDispatch({type:"ADD_TO_CART",payload:product})
-            return data.cart}
-        else
-        console.error("Not able to Post Cart Data",status)
+            product.addedToCart=true;
+            cartDispatch({ type: "SET_DATA", payload: data.cart });
+            return data.cart
+          }
+          }catch(error){
+            addToast({
+              type: "Error",
+              msg: "Unable to Add Item in Cart",
+            });
+            console.error(error)
+          }
+        
     };
+    const postCartDataFromWishList = (product) => {
+      cart.some(item => item._id ===product._id)?increaseQuantity(product._id):postCartData(product)
+    };
+
     const deleteCartData = async (id) => {
         try{
             const { status, data } = await privateInstance({
                 method: "delete",
-                url: `/user/cart/:${id}`,
+                url: `/user/cart/${id}`,
             })
-            console.log(data)
             if(status===200){
                 cartDispatch({type:"REMOVE_FROM_CART",payload:id})
                 return data.cart
             }
         }catch(error){
+           addToast({
+             type: "Error",
+             msg: "Unable to Remove Item from Cart",
+           });
             console.error(error)
            }
     }
     const increaseQuantity = async (id) => {
-        console.log("i am increasing quantity")
         const { status, data } = await privateInstance({
           method: "post",
-          url: `/user/cart/:${id}`,
+          url: `/user/cart/${id}`,
           data: {
             action: {
               type: "increment"
@@ -55,8 +77,7 @@ const CartProvider = ({children}) => {
           },
         })
         if(status ===200){
-            console.log(data)
-            cartDispatch({ type: "INCREASAE_QUANTITY", payload: id });
+            cartDispatch({ type: "INCREASAE_QUANTITY", payload: data.cart });
             return data.cart;
         }
         else
@@ -65,7 +86,7 @@ const CartProvider = ({children}) => {
     const decreaseQuantity = async (id) => {
       const { status, data } = await privateInstance({
         method: "post",
-        url: `/user/cart/:${id}`,
+        url: `/user/cart/${id}`,
         data: {
           action: {
             type: "decrement"
@@ -73,7 +94,7 @@ const CartProvider = ({children}) => {
         },
       })
       if(status ===200){
-        cartDispatch({ type: "DECREASE_QUANTITY", payload: id });
+        cartDispatch({ type: "DECREASE_QUANTITY", payload: data.cart });
         return data.cart;
       }
       else
@@ -82,14 +103,11 @@ const CartProvider = ({children}) => {
     };
 
     const [cart, cartDispatch] = useReducer(cartReducer, []);
-    
-
-    console.log(cart);
 
     const getPriceForPriceCard = () => {
-        const getTotalMrp = cart.reduce((acc,curVal) =>acc+curVal.mrp,0)
+        const getTotalMrp = cart.reduce((acc,curVal) =>acc+(curVal.mrp*curVal.qty),0)
         const getTotalDiscount = cart.reduce(
-          (acc, curVal) =>  acc + curVal.mrp - curVal.currentPrice,
+          (acc, curVal) =>  acc + (curVal.mrp - curVal.currentPrice)*curVal.qty,
           0
         );
         const getDeliveryPrice=49
@@ -106,6 +124,7 @@ const CartProvider = ({children}) => {
           increaseQuantity,
           decreaseQuantity,
           getPriceForPriceCard,
+          postCartDataFromWishList,
         }}
       >
         {children}

@@ -1,5 +1,4 @@
 export const filterReducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case "clear":
       return {
@@ -25,7 +24,6 @@ export const filterReducer = (state, action) => {
     case "sortByAccessoriesType":
       return { ...state, sortByAccessoriesType: action.payload };
     case "sortByBrands":
-      console.log(" i m here");
       return { ...state, sortByBrands: action.payload };
     default:
       return { ...state };

@@ -16,7 +16,7 @@ function CartProductCard({cartDetails}) {
           <img
             className="card_content_image_horizontal"
             src={cartDetails.productImg}
-            alt=""
+            alt="CARD IMAGE"
           />
           <div className="card_content_body_horizontal">
             <i
@@ -41,13 +41,13 @@ function CartProductCard({cartDetails}) {
                 </span>
               </div>
               <div className="flex flex-ai-center">
+                <label htmlFor="quantity" className="mr-x-small">
+                  Quantity:{" "}
+                </label>
                 <BsFillPlusCircleFill
                   cursor="pointer"
                   onClick={() => increaseQuantity(cartDetails._id)}
                 />
-                <label htmlFor="quantity" className="mr-x-small">
-                  Quantity:{" "}
-                </label>
                 <span className="mx-x-small">{cartDetails.qty}</span>
                 {cartDetails.qty > 1 && (
                   <FiMinusCircle
@@ -61,8 +61,8 @@ function CartProductCard({cartDetails}) {
               <div className="card_button_action">
                 <button
                   onClick={() => {
-                    postWishListData(cartDetails)
-                    deleteCartData(cartDetails._id)
+                    postWishListData(cartDetails);
+                    deleteCartData(cartDetails._id);
                   }}
                   className="btn btn_primary_outline fs-xs"
                 >

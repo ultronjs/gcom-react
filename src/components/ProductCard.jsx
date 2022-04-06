@@ -1,22 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart,useWishList } from "../context/";
+import { useWishList,useAuth,useToast,useCart } from "../context/";
 import { formatCurreny } from "../utils/format";
+import "../index.css"
 
 function ProductCard({ productDetails }) {
-  const { cartDispatch, postCartData } = useCart();
+  const {  postCartData } = useCart();
   const { postWishListData,deleteWishListData } = useWishList();
+  const { signInStatus } = useAuth();
+  const { addToast } = useToast();
+  const wishListToast = () => {
+    addToast({ type: "Info", msg: "Login to Access WishList" });
+  };
+  const cartToast = () => {
+    addToast({ type: "Info", msg: "Login to Access Cart" });
+  };
 
   return (
     <div
       key={productDetails._id}
       className="card product_card card_with_dismiss"
     >
-      <div className="card_content">
+      <div className="card_content flex flex-col flex-ai-center">
         <img
           className="card_content_image"
           src={productDetails.productImg}
-          alt=""
+          alt="CARD IMAGE"
         />
         {productDetails.addedToWishList ? (
           <i
@@ -29,8 +38,11 @@ function ProductCard({ productDetails }) {
         ) : (
           <i
             onClick={() => {
-              productDetails.addedToWishList = true;
-              postWishListData(productDetails);
+              if (signInStatus.status) {
+                postWishListData(productDetails);
+              } else {
+                wishListToast();
+              }
             }}
             className="far fa-heart fa-lg card_dismiss card_product_heart position_absolute right-10 top-20"
           ></i>
@@ -47,7 +59,7 @@ function ProductCard({ productDetails }) {
           </span>
         )}
 
-        <div className="card_content_header">
+        <div className="card_content_header flex-as-flex-start">
           <div className="primary_header">{productDetails.name}</div>
           <div className="secondary_header">By {productDetails.brand}</div>
           <div className="fs-s">
@@ -72,8 +84,11 @@ function ProductCard({ productDetails }) {
           ) : (
             <button
               onClick={() => {
-                productDetails.addedToCart = true;
-                postCartData(productDetails);
+                if (signInStatus.status) {
+                  postCartData(productDetails);
+                } else {
+                  cartToast();
+                }
               }}
               className="btn btn_primary_outline"
             >

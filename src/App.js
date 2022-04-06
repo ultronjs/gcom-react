@@ -7,6 +7,7 @@ import WishList from "./pages/WishList";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import Mockman from "mockman-js";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="*" element={<NotFound />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>

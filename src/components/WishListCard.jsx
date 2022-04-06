@@ -4,14 +4,14 @@ import { formatCurreny } from '../utils/format';
 
 function WishListCard({ wishListDetails}) {
   const { deleteWishListData } = useWishList();
-  const { postCartData } = useCart();
+  const { postCartDataFromWishList } = useCart();
   return (
-    <div className="card wishList_Card card_with_dismiss">
-      <div className="card_content">
+    <div className="card product_card card_with_dismiss">
+      <div className="card_content flex flex-col flex-ai-center">
         <img
           className="card_content_image"
-          src="../assets/card_image.png"
-          alt=""
+          src={wishListDetails.productImg}
+          alt="CARD IMAGE"
         />
         <i
           onClick={() => deleteWishListData(wishListDetails._id)}
@@ -21,7 +21,7 @@ function WishListCard({ wishListDetails}) {
           {wishListDetails.rating}
           <i className="fas fa-star"></i>
         </span>
-        <div className="card_content_header">
+        <div className="card_content_header flex-as-flex-start">
           <div className="primary_header">{wishListDetails.name}</div>
           <div className="secondary_header">By {wishListDetails.brand}</div>
           <div className="fs-s">
@@ -42,7 +42,7 @@ function WishListCard({ wishListDetails}) {
         <div className="card_button_action">
           <button
             onClick={() => {
-              postCartData(wishListDetails);
+              postCartDataFromWishList(wishListDetails);
               deleteWishListData(wishListDetails._id);
             }}
             className="btn btn_primary_outline"
