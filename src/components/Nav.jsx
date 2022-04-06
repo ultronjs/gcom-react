@@ -1,14 +1,16 @@
 import "../index.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth, useCart,useWishList,useToast } from "../context";
-import WishList from "../pages/WishList";
+import { useAuth, useCart,useWishList,useToast, useFilter } from "../context";
+import { useNavigate } from "react-router";
 
 export default function Nav() {
+  const navigate = useNavigate()
   const { signInStatus, signInStatusDispatch } = useAuth();
   const {cart} = useCart()
   const {wishList} = useWishList()
   const {addToast} = useToast();
+  const {setSearch} = useFilter()
   const wishListToast=() =>{
     addToast({type:"Info",msg:"Login to Access WishList"})
   }
@@ -18,6 +20,7 @@ export default function Nav() {
   const logOut =() => {
     localStorage.removeItem("token")
     signInStatusDispatch({ type: "SIGN_OUT"});
+    navigate("/")
   }
   return (
     <nav className="navbar">
@@ -28,8 +31,7 @@ export default function Nav() {
         </Link>
       </div>
       <div className="nav_search">
-        <input className="input_regular input_round" placeholder="Search" />
-        <button className="btn btn_light">Search</button>
+        <input className="input_regular input_round" onChange={(e)=> setSearch(e.target.value)} placeholder="Search" />
       </div>
       <div className="nav_right_side">
         {signInStatus.status ? (
@@ -52,7 +54,7 @@ export default function Nav() {
                 <i className="fas fa-shopping-cart fa-2x"></i>
                 {cart.length > 0 && (
                   <span className="badge badge_circle badge_primary position_absolute right-0 top-0">
-                    {cart.length}
+                    {cart.reduce((acc, curVal) => acc + curVal.qty, 0)}
                   </span>
                 )}
               </span>

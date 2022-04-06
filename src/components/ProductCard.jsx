@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useWishList,useAuth,useToast,useCart } from "../context/";
 import { formatCurreny } from "../utils/format";
+import "../index.css"
 
 function ProductCard({ productDetails }) {
   const {  postCartData } = useCart();
@@ -20,7 +21,7 @@ function ProductCard({ productDetails }) {
       key={productDetails._id}
       className="card product_card card_with_dismiss"
     >
-      <div className="card_content">
+      <div className="card_content flex flex-col flex-ai-center">
         <img
           className="card_content_image"
           src={productDetails.productImg}
@@ -29,9 +30,8 @@ function ProductCard({ productDetails }) {
         {productDetails.addedToWishList ? (
           <i
             onClick={() => {
-                productDetails.addedToWishList = false;
-                deleteWishListData(productDetails._id);
-              
+              productDetails.addedToWishList = false;
+              deleteWishListData(productDetails._id);
             }}
             className="fas fa-heart fa-lg card_dismiss card_product_heart_filled position_absolute right-10 top-20"
           ></i>
@@ -59,7 +59,7 @@ function ProductCard({ productDetails }) {
           </span>
         )}
 
-        <div className="card_content_header">
+        <div className="card_content_header flex-as-flex-start">
           <div className="primary_header">{productDetails.name}</div>
           <div className="secondary_header">By {productDetails.brand}</div>
           <div className="fs-s">

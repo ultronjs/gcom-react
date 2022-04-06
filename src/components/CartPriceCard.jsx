@@ -9,7 +9,8 @@ function CartPriceCard() {
     <div className="card price_card flex flex-col">
       <div className="m-x-small px-x-small">
         <span>
-          <strong>Price Details</strong> ({cart.length} Items)
+          <strong>Price Details</strong> (
+          {cart.reduce((acc, curVal) => acc + curVal.qty, 0)} Items)
         </span>
       </div>
       <div className="flex flex-row flex-jc-space-between mx-x-small mb-x-small px-x-small">

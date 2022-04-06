@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import "../index.css";
 import { Link,useNavigate } from 'react-router-dom'
-import { useAuth } from '../context';
+import { useAuth,useToast } from '../context';
 import { publicInstance } from '../utils/axios';
 
 function LoginForm() {
@@ -10,8 +10,14 @@ function LoginForm() {
     email: "",
     password: ""
   };
+  const guestLoginCreds = {
+    email:"adarshbalika@gmail.com",
+    password:"adarshbalika"
+  }
   const [signIn, setSignIn] = useState(initialSignInState);
-  const { signInStatusDispatch } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const { signInStatusDispatch, } = useAuth();
+  const { addToast } = useToast();
   const onChangeHandler = (e) => {
     setSignIn((prevState) => ({
       ...prevState,
@@ -34,6 +40,32 @@ function LoginForm() {
         }
       } catch (error) {
         console.log(error);
+        addToast({
+          type: "Error",
+          msg: "Unable to Login",
+        });
+      }
+    }
+    const loginWithGuestLogin = async () => {
+      try {
+        const { status, data } = await publicInstance({
+          method: "post",
+          url: "/auth/login",
+          data: {
+            ...guestLoginCreds,
+          },
+        });
+        if (status === 200) {
+          localStorage.setItem("token", data.encodedToken);
+          signInStatusDispatch({ type: "SET_USER", payload: data });
+          navigate("/products");
+        }
+      } catch (error) {
+        console.log(error);
+        addToast({
+          type: "Error",
+          msg: "Unable to Login",
+        });
       }
     }
   return (
@@ -67,18 +99,34 @@ function LoginForm() {
             name="password"
             onChange={onChangeHandler}
             className="input_regular input_corner"
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter 6 charater or more"
           />
-          <i className="input_icon flex flex-jc-flex-end fas fa-eye"></i>
+          {showPassword ? (
+            <i
+              onClick={() => setShowPassword(false)}
+              className="input_icon fas fa-eye-slash"
+            ></i>
+          ) : (
+            <i
+              onClick={() => setShowPassword(true)}
+              className="input_icon fas fa-eye"
+            ></i>
+          )}
         </div>
         {/* <div>
           <input type="checkbox" />
           Remember Me
         </div> */}
-        <div>
+        <div className="flex flex-col">
           <button onClick={onSubmit} className="btn btn_primary">
             LOGIN
+          </button>
+          <button
+            onClick={loginWithGuestLogin}
+            className="btn btn_primary_outline"
+          >
+            LOGIN WITH GUEST LOGIN
           </button>
         </div>
       </div>

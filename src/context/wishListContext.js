@@ -48,7 +48,7 @@ const WishListProvider = ({children}) => {
         try{
             const {status,data} =  await privateInstance({
             method: "delete",
-            url: `/user/wishlist/:${id}`,
+            url: `/user/wishlist/${id}`,
         })
             if(status===200){
                 wishListDispatch({

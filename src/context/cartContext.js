@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useState,useEffect } from "react";
-import { privateInstance, publicInstance } from "../utils/axios";
+import { privateInstance } from "../utils/axios";
 import { cartReducer } from "../reducers";
 import { useToast } from "./toastContext";
 
@@ -32,7 +32,7 @@ const CartProvider = ({children}) => {
             }});
         if(status===201){
             product.addedToCart=true;
-            cartDispatch({type:"ADD_TO_CART",payload:product})
+            cartDispatch({ type: "SET_DATA", payload: data.cart });
             return data.cart
           }
           }catch(error){
@@ -44,6 +44,10 @@ const CartProvider = ({children}) => {
           }
         
     };
+    const postCartDataFromWishList = (product) => {
+      cart.some(item => item._id ===product._id)?increaseQuantity(product._id):postCartData(product)
+    };
+
     const deleteCartData = async (id) => {
         try{
             const { status, data } = await privateInstance({
@@ -101,9 +105,9 @@ const CartProvider = ({children}) => {
     const [cart, cartDispatch] = useReducer(cartReducer, []);
 
     const getPriceForPriceCard = () => {
-        const getTotalMrp = cart.reduce((acc,curVal) =>acc+curVal.mrp,0)
+        const getTotalMrp = cart.reduce((acc,curVal) =>acc+(curVal.mrp*curVal.qty),0)
         const getTotalDiscount = cart.reduce(
-          (acc, curVal) =>  acc + curVal.mrp - curVal.currentPrice,
+          (acc, curVal) =>  acc + (curVal.mrp - curVal.currentPrice)*curVal.qty,
           0
         );
         const getDeliveryPrice=49
@@ -120,6 +124,7 @@ const CartProvider = ({children}) => {
           increaseQuantity,
           decreaseQuantity,
           getPriceForPriceCard,
+          postCartDataFromWishList,
         }}
       >
         {children}

@@ -14,7 +14,8 @@ export const products = [
     discount: 36,
     outOfStock: true,
     brand: "Sony",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246690/G-COM/PS5_Marvel_Spiderman_iqjvnq.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -30,7 +31,8 @@ export const products = [
     discount: 30,
     outOfStock: false,
     brand: "Sony",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246691/G-COM/PS5_Sackboy_ycnctv.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -46,7 +48,8 @@ export const products = [
     discount: 39,
     outOfStock: false,
     brand: "Sony",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246690/G-COM/PS5_Demon_Souls_xeucli.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -62,7 +65,8 @@ export const products = [
     discount: 46,
     outOfStock: false,
     brand: "Sony",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246690/G-COM/PS5_RATCHET_ezgj3q.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -78,7 +82,8 @@ export const products = [
     discount: 37,
     outOfStock: false,
     brand: "Sony",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649251760/G-COM/ps5_returnal_ymzlvu.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -94,7 +99,8 @@ export const products = [
     discount: 14,
     outOfStock: false,
     brand: "Microsoft",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246693/G-COM/XBOX_Anthem_Bundle_ybiscx.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -110,7 +116,8 @@ export const products = [
     discount: 16,
     outOfStock: true,
     brand: "Microsoft",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246686/G-COM/xbox_white_wireless_vrpssj.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -126,7 +133,8 @@ export const products = [
     discount: 64,
     outOfStock: false,
     brand: "Microsoft",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246686/G-COM/xbox_controller_wireless_ra8ru4.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -142,7 +150,8 @@ export const products = [
     discount: 38,
     outOfStock: false,
     brand: "Microsoft",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246686/G-COM/xbox_white_wireless_vrpssj.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -158,7 +167,8 @@ export const products = [
     discount: 27,
     outOfStock: false,
     brand: "Logitech",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246689/G-COM/logitech_racing_wheel_tzihoq.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -174,7 +184,8 @@ export const products = [
     discount: 20,
     outOfStock: false,
     brand: "Hori",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246688/G-COM/hori_racing_wheel_p4e0yb.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -190,7 +201,8 @@ export const products = [
     discount: 19,
     outOfStock: false,
     brand: "ThrustMaster",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246691/G-COM/thrustmaster_racing_wheel_elwepi.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -206,7 +218,8 @@ export const products = [
     discount: 17,
     outOfStock: false,
     brand: "ThrustMaster",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246691/G-COM/thrustmaster_racing_wheel_xbox_blmh9f.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -222,7 +235,8 @@ export const products = [
     discount: 74,
     outOfStock: false,
     brand: "Boat",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246686/G-COM/boat_headset_xrckgr.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -238,7 +252,8 @@ export const products = [
     discount: 24,
     outOfStock: false,
     brand: "HyperX",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246688/G-COM/hyperx_headset_h50bzp.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -254,7 +269,8 @@ export const products = [
     discount: 15,
     outOfStock: false,
     brand: "Microsoft",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649251808/G-COM/xbox_headsetjpg_tsvdqj.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -270,7 +286,8 @@ export const products = [
     discount: 17,
     outOfStock: false,
     brand: "Sony",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246690/G-COM/playstation_headset_whbdqd.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -286,7 +303,8 @@ export const products = [
     discount: 38,
     outOfStock: false,
     brand: "Elgato",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246687/G-COM/Elgato_Game_Capture_y04hkb.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -302,7 +320,8 @@ export const products = [
     discount: 34,
     outOfStock: false,
     brand: "Elgato",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246688/G-COM/ElgatoGame1_ep3v8a.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -318,7 +337,8 @@ export const products = [
     discount: 30,
     outOfStock: false,
     brand: "Elgato",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649251869/elgato_stream_Desk_a1jlny.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -334,7 +354,8 @@ export const products = [
     discount: 56,
     outOfStock: false,
     brand: "Oculus",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246690/G-COM/oculus_vr_uagrav.jpg",
     addedToWishList: false,
     isBestSeller: true,
     addedToCart: false,
@@ -350,7 +371,8 @@ export const products = [
     discount: 50,
     outOfStock: false,
     brand: "Flowres",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246693/G-COM/vr3_jvyr73.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -366,7 +388,8 @@ export const products = [
     discount: 33,
     outOfStock: false,
     brand: "IRUSU",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246692/G-COM/vr2_aa2gjz.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -382,7 +405,8 @@ export const products = [
     discount: 57,
     outOfStock: false,
     brand: "KontrolFreek",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246692/G-COM/thumb_grip1_mxzuqk.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -398,7 +422,8 @@ export const products = [
     discount: 50,
     outOfStock: false,
     brand: "KontrolFreek",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246692/G-COM/thumb_grip2_gt4ict.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -414,7 +439,8 @@ export const products = [
     discount: 42,
     outOfStock: false,
     brand: "KontrolFreek",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246692/G-COM/thumb_grip3_kwmqg6.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -430,7 +456,8 @@ export const products = [
     discount: 35,
     outOfStock: false,
     brand: "New World",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246687/G-COM/cover_playstation_controller_lusfld.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -446,7 +473,8 @@ export const products = [
     discount: 38,
     outOfStock: false,
     brand: "New World",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246687/G-COM/cover_xbox_controller_io6zp8.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -462,7 +490,8 @@ export const products = [
     discount: 60,
     outOfStock: false,
     brand: "Turtle Beach",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246689/G-COM/international_brands_turtle_beach_headset_eb6lb6.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -478,7 +507,8 @@ export const products = [
     discount: 32,
     outOfStock: false,
     brand: "PowerA",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246688/G-COM/international_brands__nitendo_controller_rnwiv6.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -494,7 +524,8 @@ export const products = [
     discount: 72,
     outOfStock: false,
     brand: "Turtle Beach",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649252016/turtle_beach_camo_qa3p8r.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -510,7 +541,8 @@ export const products = [
     discount: 60,
     outOfStock: false,
     brand: "EA",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246687/G-COM/ea_fifa_lmiwfn.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -526,7 +558,8 @@ export const products = [
     discount: 37,
     outOfStock: false,
     brand: "EA",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246687/G-COM/ea_fifa22_zhrx9w.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -542,7 +575,8 @@ export const products = [
     discount: 41,
     outOfStock: false,
     brand: "EA",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649252309/G-COM/fifa_21_f9aobj.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -558,7 +592,8 @@ export const products = [
     discount: 35,
     outOfStock: false,
     brand: "RockStar",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246691/G-COM/rockstar_v_premium_wqihho.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -574,7 +609,8 @@ export const products = [
     discount: 41,
     outOfStock: false,
     brand: "RockStar",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246691/G-COM/rockstar_reddead_nbohcz.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -590,7 +626,8 @@ export const products = [
     discount: 19,
     outOfStock: false,
     brand: "RockStar",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246691/G-COM/rockstar_grand_auto_trilogh_bcxlxd.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -606,7 +643,8 @@ export const products = [
     discount: 25,
     outOfStock: false,
     brand: "Warner Bros",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246690/G-COM/Mortal_Kombat_11_etdnkz.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -622,7 +660,8 @@ export const products = [
     discount: 18,
     outOfStock: false,
     brand: "Warner Bros",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246693/G-COM/wb_hitman_k11zr1.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -638,7 +677,8 @@ export const products = [
     discount: 9,
     outOfStock: false,
     brand: "Warner Bros",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246693/G-COM/wb_fortnite_hde3i7.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -654,7 +694,8 @@ export const products = [
     discount: 65,
     outOfStock: false,
     brand: "Marvel",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246689/G-COM/marvel_avengers_ffhqym.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -670,7 +711,8 @@ export const products = [
     discount: 28,
     outOfStock: false,
     brand: "Marvel",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246689/G-COM/marvel_lego_zqihuo.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -686,7 +728,8 @@ export const products = [
     discount: 50,
     outOfStock: false,
     brand: "Marvel",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649252017/ps5_marvel_Avengers_wd2vt9.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -702,7 +745,8 @@ export const products = [
     discount: 41,
     outOfStock: false,
     brand: "Ubisoft",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_scale,h_171,w_304/v1649246692/G-COM/ubisoft_far_cry_6_a8uacy.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -718,7 +762,8 @@ export const products = [
     discount: 52,
     outOfStock: false,
     brand: "Ubisoft",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649246692/G-COM/ubisoft_rainbox_pc_lnsbn4.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,
@@ -734,7 +779,8 @@ export const products = [
     discount: 15,
     outOfStock: false,
     brand: "Ubisoft",
-    productImg: "/assets/card_image.png",
+    productImg:
+      "https://res.cloudinary.com/bansal-s/image/upload/c_fit,h_171,w_304/v1649251305/G-COM/assassins_creed_kdafye.jpg",
     addedToWishList: false,
     isBestSeller: false,
     addedToCart: false,

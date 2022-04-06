@@ -23,6 +23,9 @@ body{
 ul{ 
     padding-inline-start: 0.5rem;
 }
+.flex-as-flex-start{
+    align-self: flex-start;
+}
 /*Navigation Custom CSS*/
 .navbar{
     display: flex;
@@ -170,6 +173,9 @@ ul{
     row-gap: 1rem;
     column-gap: 0.5rem;
 }
+.card_content_image{
+    width: auto;
+}
 .card_product_heart:hover{
     background-color: var(--pink);
 }
@@ -200,6 +206,7 @@ ul{
     justify-content: flex-start;
     align-items: flex-end;
     gap: 0.5rem;
+    margin: auto;
 }
 
 .cart_price_container{
@@ -211,6 +218,14 @@ ul{
 .card_horizontal{
     width: fit-content;
     height: fit-content;
+}
+.card_content_image_horizontal{
+    height: 14rem;
+    width: 14rem;
+}
+.card_horizontal {
+    width: 45rem;
+    height: 15rem;
 }
 .card_content_horizontal{
     align-items: center;
@@ -224,6 +239,10 @@ ul{
 }
 .empty_image{  
     height: 25rem;
+}
+.not_found_image{
+    height: 60vh;
+    width: 50vw;
 }
 .flex-wrap{
     flex-wrap: wrap;
@@ -267,7 +286,7 @@ ul{
 @media only screen and (max-width: 1100px) {
     .cart_container{
     display: grid;
-    grid-template-rows: 0.4fr 0.6fr;
+    grid-template-rows: 0.2fr 0.8fr;
     grid-template-columns: 1fr;
     min-height: 85vh;
     gap: .5rem;
@@ -284,7 +303,7 @@ ul{
         border-left:transparent;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
     }
 
 }
@@ -297,6 +316,10 @@ ul{
     }
     .product_container{
     grid-template-columns: 1fr;
+    justify-content: center;
+    }
+    .product_grid{
+        justify-content: center;
     }
 }
 @media only screen and (max-width: 520px) {
@@ -308,16 +331,10 @@ ul{
     }
     .product_container{
     grid-template-columns: 1fr;
+    justify-content: center;
     }
     .nav_left_side span{
         display: none;
-    }
-    .card_content_image{
-        height: 25px;
-        width: 25px;
-    }
-    .card_content_image_horizontal{
-        width: 60%;
     }
 
 }
@@ -330,6 +347,7 @@ ul{
     }
     .product_container{
     grid-template-columns: 1fr;
+    justify-content: center;
     }
     .nav_left_side span{
         display: none;

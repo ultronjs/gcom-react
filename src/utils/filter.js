@@ -176,3 +176,7 @@ export const sortByBrands = (state, products) => {
       return [...products];
   }
 };
+
+export const searchFilter = (items,search) => {
+  return items.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase()))
+}

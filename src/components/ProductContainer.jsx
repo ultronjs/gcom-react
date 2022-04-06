@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from './ProductCard';
-import { getFilteredData } from "../utils/filter";
+import { getFilteredData, searchFilter } from "../utils/filter";
 import { useFilter } from "../context/FilterContext";
-import { products } from "../backend/db/products";
 import { publicInstance } from "../utils/axios";
+import { useCart, useWishList } from "../context";
 
 function ProductContainer() {
     const [product,setProduct] = useState([])
     const [filteredData,setFilteredData] = useState([])
-    const {state} = useFilter()
+    const {state,search} = useFilter()
+    const {cart} = useCart()
+    const { wishList } = useWishList();
     useEffect(()=>{
       (async function (){
         try{
@@ -25,13 +27,23 @@ function ProductContainer() {
       setFilteredData(getFilteredData(state, product));
     },[state])
 
-
   return (
     <div className="product_grid py-small">
       {filteredData &&
-        filteredData.map((element) => (
-          <ProductCard key={element.id} productDetails={element}></ProductCard>
-        ))}
+        searchFilter(filteredData, search).map((element) => {
+          cart.some((cartItem) => cartItem._id === element._id)
+            ? (element.addedToCart = true)
+            : (element.addedToCart = false);
+          wishList.some((wishListItem) => wishListItem._id === element._id)
+            ? (element.addedToWishList = true)
+            : (element.addedToWishList = false);
+          return (
+            <ProductCard
+              key={element.id}
+              productDetails={element}
+            ></ProductCard>
+          );
+        })}
     </div>
   );
 }
