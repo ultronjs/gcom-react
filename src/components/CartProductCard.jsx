@@ -16,7 +16,7 @@ function CartProductCard({cartDetails}) {
           <img
             className="card_content_image_horizontal"
             src={cartDetails.productImg}
-            alt=""
+            alt="CARD IMAGE"
           />
           <div className="card_content_body_horizontal">
             <i

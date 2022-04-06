@@ -63,7 +63,7 @@ function SignUpForm() {
       <div className="form_container">
         <div className="form sign_up">
           <div className="form_img">
-            <img src="/assets/login_logo.png" alt="" />
+            <img src="/assets/login_logo.png" alt="SIGN UP LOGO" />
           </div>
           <div className="form_header">
             <span className="h2 text_center">Sign Up</span>

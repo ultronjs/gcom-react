@@ -72,7 +72,7 @@ function LoginForm() {
     <div className="form_container">
       <div className="form">
         <div className="form_img">
-          <img src="/assets/login_logo.png" alt="" />
+          <img src="/assets/login_logo.png" alt="LOGIN LOGO" />
         </div>
         <div className="form_header">
           <span className="h2 text_center">Login</span>

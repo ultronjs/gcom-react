@@ -25,7 +25,7 @@ function ProductCard({ productDetails }) {
         <img
           className="card_content_image"
           src={productDetails.productImg}
-          alt=""
+          alt="CARD IMAGE"
         />
         {productDetails.addedToWishList ? (
           <i

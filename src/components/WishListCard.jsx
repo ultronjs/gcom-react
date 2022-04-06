@@ -11,7 +11,7 @@ function WishListCard({ wishListDetails}) {
         <img
           className="card_content_image"
           src={wishListDetails.productImg}
-          alt=""
+          alt="CARD IMAGE"
         />
         <i
           onClick={() => deleteWishListData(wishListDetails._id)}
