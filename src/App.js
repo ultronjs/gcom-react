@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import Mockman from "mockman-js";
 import NotFound from "./pages/NotFound";
+import { RequireAuth } from "./pages/RequireAuth";
 
 function App() {
   return (
@@ -15,12 +16,27 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<WishList />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/mockman" element={<Mockman />} />
+        {/* Protected Paths */}
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth>
+              <Cart />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <RequireAuth>
+              <WishList />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </div>
   );
