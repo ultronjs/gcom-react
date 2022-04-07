@@ -106,3 +106,10 @@ From **WishList** page
 - Address Page
 
 ---
+
+## Test Credentials
+- Email- adarshbalika@gmail.com
+- Password- adarshbalika
+---
+- Email- swapnilbansal@gmail.com
+- Password- swapnilbansal
