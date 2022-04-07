@@ -8,20 +8,25 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "PS5",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "The PlayStation 5 (PS5) is a home video game console developed by Sony Interactive Entertainment.",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    categoryName: "XBOX",
+    description: "Xbox is a video gaming brand created and owned by Microsoft.",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "Nintendo Switch",
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      "The Nintendo Switch is a video game console developed by Nintendo.Nintendo Switch is designed to fit your life, transforming from home console to portable system in a snap.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Desktop/PC",
+    description:
+      "A desktop computer is a personal computer designed for regular use at a single location on or near a desk due to its size and power requirements",
   },
 ];
