@@ -5,8 +5,13 @@ export const publicInstance = axios.create({
   headers: {'Accept': '*/*'}
 });
 
-export const privateInstance = axios.create({
-  baseURL: "/api/",
-  timeout: 1000,
-  headers: { Accept: "*/*", authorization: localStorage.getItem("token") },
+publicInstance.interceptors.request.use(req=>{
+  console.log("request",req)
+  return req
+})
+publicInstance.interceptors.response.use((res) => {
+  console.log("response", res);
+  return res;
 });
+
+

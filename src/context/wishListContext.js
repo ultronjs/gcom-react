@@ -1,9 +1,14 @@
 import { createContext, useContext, useReducer } from "react";
-import { privateInstance } from "../utils/axios";
+// import { instance }  from "../utils/axios";
 import { wishListReducer } from "../reducers";
 import { useToast } from "./toastContext";
 
 const WishListContext = createContext({wishList:[]})
+const instance = () =>
+  import("../utils/privateAxios").then((privateInstance) => {
+    console.log("ex wishlist");
+    return privateInstance;
+  });
 
 
 const WishListProvider = ({children}) => {
@@ -11,7 +16,7 @@ const WishListProvider = ({children}) => {
 
     const getWishListData = async () => {
     try{
-        const {status,data} = await privateInstance
+        const {status,data} = await instance
       .get("/user/wishlist")
       if(status ===200){
         wishListDispatch({ type: "SET_DATA", payload: data.wishlist })
@@ -23,7 +28,7 @@ const WishListProvider = ({children}) => {
     }
     const postWishListData = async (product) => {
         try{
-            const {status,data} =  await privateInstance({
+            const {status,data} =  await instance({
             method: "post",
             url: "/user/wishlist",
             data: {
@@ -46,7 +51,7 @@ const WishListProvider = ({children}) => {
     }   
     const deleteWishListData = async (id) => {
         try{
-            const {status,data} =  await privateInstance({
+            const {status,data} =  await instance({
             method: "delete",
             url: `/user/wishlist/${id}`,
         })

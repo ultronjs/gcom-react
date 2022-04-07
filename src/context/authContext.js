@@ -32,7 +32,7 @@ const AuthProvider=({children}) => {
       signInReducer,
       initialSignInStatus
     );
-
+      console.log(signInStatus)
     return (
       <AuthContext.Provider value={{ signInStatus,signInStatusDispatch }}>
         {children}
