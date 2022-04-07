@@ -37,22 +37,31 @@ function Footer() {
         <li>
           <ul className="inline_list text_center flex flex-jc-space-around">
             <li>
-              <a>
+              <a
+                className="link_wrapper"
+                href="https://twitter.com/ultronSwapnil"
+              >
                 <i className="fab fa-twitter fa-lg"></i>
               </a>
             </li>
             <li>
-              <a>
+              <a className="link_wrapper" href="https://github.com/ultronjs">
                 <i className="fab fa-github fa-lg"></i>
               </a>
             </li>
             <li>
-              <a>
+              <a
+                className="link_wrapper"
+                href="https://www.instagram.com/ul7ron/"
+              >
                 <i className="fab fa-instagram fa-lg"></i>
               </a>
             </li>
             <li>
-              <a>
+              <a
+                className="link_wrapper"
+                href="https://www.linkedin.com/in/swapnil-bansal/"
+              >
                 <i className="fab fa-linkedin fa-lg"></i>
               </a>
             </li>
