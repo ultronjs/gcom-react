@@ -8,7 +8,7 @@ import { useWishList } from '../context';
 
 function CartProductCard({cartDetails}) {
     const { deleteCartData ,increaseQuantity,decreaseQuantity } = useCart();
-    const {postWishListData} = useWishList()
+    const { wishList, postWishListData, deleteWishListData } = useWishList();
   return (
     <>
       <div className="card card_horizontal badge_wrapper">
@@ -59,15 +59,28 @@ function CartProductCard({cartDetails}) {
             </div>
             <div className="card_actions card_actions_horizontal flex-jc-center">
               <div className="card_button_action">
-                <button
-                  onClick={() => {
-                    postWishListData(cartDetails);
-                    deleteCartData(cartDetails._id);
-                  }}
-                  className="btn btn_primary_outline fs-xs"
-                >
-                  MOVE TO WISHLIST
-                </button>
+                {wishList.some((wishListItem) =>
+                  wishListItem._id === cartDetails._id) ? (
+                    <button
+                      onClick={() => {
+                        deleteWishListData(cartDetails._id);
+                      }}
+                      className="btn btn_primary_outline fs-xs"
+                    >
+                      REMOVE FROM WISHLIST
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        postWishListData(cartDetails);
+                        deleteCartData(cartDetails._id);
+                      }}
+                      className="btn btn_primary_outline fs-xs"
+                    >
+                      MOVE TO WISHLIST
+                    </button>
+                  )
+                }
               </div>
             </div>
           </div>
