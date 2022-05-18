@@ -312,7 +312,11 @@ function Filter() {
                      value={value}
                      onChange={rangeHanlder}
                    />
-                   <span>Range:{value}</span>
+                   <div className='flex flex-jc-space-between'>
+                     <span>0</span>
+                     <span>{value}</span>
+                     <span>70000</span>
+                   </div>
                  </li>
                );
              })}
