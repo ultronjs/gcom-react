@@ -59,28 +59,18 @@ function CartProductCard({cartDetails}) {
             </div>
             <div className="card_actions card_actions_horizontal flex-jc-center">
               <div className="card_button_action">
-                {wishList.some((wishListItem) =>
-                  wishListItem._id === cartDetails._id) ? (
-                    <button
+                <button
                       onClick={() => {
-                        deleteWishListData(cartDetails._id);
-                      }}
-                      className="btn btn_primary_outline fs-xs"
-                    >
-                      REMOVE FROM WISHLIST
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        postWishListData(cartDetails);
+                        if(wishList.some(wishlistItem => wishlistItem._id === cartDetails._id))
                         deleteCartData(cartDetails._id);
+                        else{
+                        postWishListData(cartDetails);
+                        deleteCartData(cartDetails._id)}
                       }}
                       className="btn btn_primary_outline fs-xs"
                     >
                       MOVE TO WISHLIST
-                    </button>
-                  )
-                }
+                </button>
               </div>
             </div>
           </div>
