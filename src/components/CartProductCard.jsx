@@ -8,7 +8,7 @@ import { useWishList } from '../context';
 
 function CartProductCard({cartDetails}) {
     const { deleteCartData ,increaseQuantity,decreaseQuantity } = useCart();
-    const { wishList, postWishListData, deleteWishListData } = useWishList();
+    const { wishList, postWishListData } = useWishList();
   return (
     <>
       <div className="card card_horizontal badge_wrapper">
