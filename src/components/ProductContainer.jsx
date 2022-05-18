@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from './ProductCard';
 import { getFilteredData, searchFilter } from "../utils/filter";
 import { useFilter } from "../context/FilterContext";
-import { publicInstance } from "../utils/axios";
+import  instance  from "../utils/axios";
 import { useCart, useWishList } from "../context";
 
 function ProductContainer() {
@@ -14,8 +14,9 @@ function ProductContainer() {
     useEffect(()=>{
       (async function (){
         try{
-        const {products} = await publicInstance.get(
-          "/products").then(response => response.data);
+        const { products } = await instance
+          .get("/products")
+          .then((response) => response.data);
           setProduct(products)
           setFilteredData(getFilteredData(state,products));
         }catch(err){

@@ -1,18 +1,21 @@
 import { createContext, useContext, useReducer } from "react";
-import { privateInstance } from "../utils/axios";
 import { wishListReducer } from "../reducers";
 import { useToast } from "./toastContext";
+import instance from "../utils/axios"
 
 const WishListContext = createContext({wishList:[]})
-
 
 const WishListProvider = ({children}) => {
     const {addToast} = useToast()
 
     const getWishListData = async () => {
     try{
-        const {status,data} = await privateInstance
-      .get("/user/wishlist")
+      const { status, data } = instance.get("/user/wishlist", {
+          headers: {
+            Accept: "*/*",
+            authorization: localStorage.getItem("token"),
+          },
+        });
       if(status ===200){
         wishListDispatch({ type: "SET_DATA", payload: data.wishlist })
         return data.wishlist}
@@ -23,12 +26,17 @@ const WishListProvider = ({children}) => {
     }
     const postWishListData = async (product) => {
         try{
-            const {status,data} =  await privateInstance({
-            method: "post",
-            url: "/user/wishlist",
-            data: {
-                product
-            }})
+            const { status, data } = await instance({
+              method: "post",
+              url: "/user/wishlist",
+              data: {
+                product,
+              },
+              headers: {
+                Accept: "*/*",
+                authorization: localStorage.getItem("token"),
+              },
+            })
             if(status ===201){
                 product.addedToWishList = true;
                 wishListDispatch({
@@ -46,10 +54,14 @@ const WishListProvider = ({children}) => {
     }   
     const deleteWishListData = async (id) => {
         try{
-            const {status,data} =  await privateInstance({
-            method: "delete",
-            url: `/user/wishlist/${id}`,
-        })
+            const { status, data } = await instance({
+              method: "delete",
+              url: `/user/wishlist/${id}`,
+              headers: {
+                Accept: "*/*",
+                authorization: localStorage.getItem("token"),
+              },
+            });
             if(status===200){
                 wishListDispatch({
                 type: "REMOVE_FROM_WISHLIST",

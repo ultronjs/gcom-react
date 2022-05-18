@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import "../index.css";
 import { Link,useNavigate } from 'react-router-dom'
 import { useAuth,useToast } from '../context';
-import { publicInstance } from '../utils/axios';
+import instance from '../utils/axios';
 
 function LoginForm() {
   const navigate = useNavigate()
@@ -26,7 +26,7 @@ function LoginForm() {
   };
   const onSubmit = async () => {
       try {
-        const { status, data } = await publicInstance({
+        const { status, data } = await instance({
           method: "post",
           url: "/auth/login",
           data: {
@@ -48,7 +48,7 @@ function LoginForm() {
     }
     const loginWithGuestLogin = async () => {
       try {
-        const { status, data } = await publicInstance({
+        const { status, data } = await instance({
           method: "post",
           url: "/auth/login",
           data: {

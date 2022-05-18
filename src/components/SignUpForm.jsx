@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import "../index.css";
 import { Link,useNavigate } from 'react-router-dom'
-import { publicInstance } from '../utils/axios';
+import  instance  from "../utils/axios";
 import { useAuth, useToast } from '../context';
 
 function SignUpForm() {
@@ -32,7 +32,7 @@ function SignUpForm() {
       signUp.confirmPassword !== ""
     ) {
       try {
-        const { status, data } = await publicInstance({
+        const { status, data } = await instance({
           method: "post",
           url: "/auth/signup",
           data: {

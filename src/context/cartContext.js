@@ -1,17 +1,21 @@
-import { createContext, useContext, useReducer, useState,useEffect } from "react";
-import { privateInstance } from "../utils/axios";
+import { createContext, useContext, useReducer } from "react";
+import instance from "../utils/axios";
 import { cartReducer } from "../reducers";
 import { useToast } from "./toastContext";
 
 const CartContext = createContext()
-
 
 const CartProvider = ({children}) => {
     const {addToast} = useToast()
 
     const getCartData = async () => {
       try{
-        const {status,data} =  await privateInstance.get("/user/cart")
+        const { status, data } = await instance.get("/user/cart", {
+          headers: {
+            Accept: "*/*",
+            authorization: localStorage.getItem("token"),
+          },
+        })
         if(status===200) 
           cartDispatch({type:"SET_DATA",payload:data.cart})
         }catch(error){
@@ -24,12 +28,17 @@ const CartProvider = ({children}) => {
     };
     const postCartData = async (product) => {
       try{
-        const {status,data}= await privateInstance({
-            method: "post",
-            url: "/user/cart",
-            data: {
-                product
-            }});
+        const { status, data } = await instance({
+          method: "post",
+          url: "/user/cart",
+          data: {
+            product,
+          },
+          headers: {
+            Accept: "*/*",
+            authorization: localStorage.getItem("token"),
+          },
+        });
         if(status===201){
             product.addedToCart=true;
             cartDispatch({ type: "SET_DATA", payload: data.cart });
@@ -50,10 +59,14 @@ const CartProvider = ({children}) => {
 
     const deleteCartData = async (id) => {
         try{
-            const { status, data } = await privateInstance({
-                method: "delete",
-                url: `/user/cart/${id}`,
-            })
+            const { status, data } = await instance({
+              method: "delete",
+              url: `/user/cart/${id}`,
+              headers: {
+                Accept: "*/*",
+                authorization: localStorage.getItem("token"),
+              },
+            });
             if(status===200){
                 cartDispatch({type:"REMOVE_FROM_CART",payload:id})
                 return data.cart
@@ -67,7 +80,7 @@ const CartProvider = ({children}) => {
            }
     }
     const increaseQuantity = async (id) => {
-        const { status, data } = await privateInstance({
+        const { status, data } = await instance({
           method: "post",
           url: `/user/cart/${id}`,
           data: {
@@ -75,7 +88,11 @@ const CartProvider = ({children}) => {
               type: "increment"
             },
           },
-        })
+          headers: {
+            Accept: "*/*",
+            authorization: localStorage.getItem("token"),
+          },
+        });
         if(status ===200){
             cartDispatch({ type: "INCREASAE_QUANTITY", payload: data.cart });
             return data.cart;
@@ -84,7 +101,7 @@ const CartProvider = ({children}) => {
         console.error("Not able to Increase the Cart Item Quantity");
     }
     const decreaseQuantity = async (id) => {
-      const { status, data } = await privateInstance({
+      const { status, data } = await instance({
         method: "post",
         url: `/user/cart/${id}`,
         data: {
@@ -92,7 +109,11 @@ const CartProvider = ({children}) => {
             type: "decrement"
           },
         },
-      })
+        headers: {
+          Accept: "*/*",
+          authorization: localStorage.getItem("token"),
+        },
+      });
       if(status ===200){
         cartDispatch({ type: "DECREASE_QUANTITY", payload: data.cart });
         return data.cart;

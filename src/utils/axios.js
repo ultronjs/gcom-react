@@ -1,12 +1,10 @@
 import axios from 'axios'
-export const publicInstance = axios.create({
-  baseURL: '/api/',
-  timeout: 1000,
-  headers: {'Accept': '*/*'}
-});
 
-export const privateInstance = axios.create({
+/* base url to make requests to the movie darabase */
+const instance = axios.create({
   baseURL: "/api/",
   timeout: 1000,
-  headers: { Accept: "*/*", authorization: localStorage.getItem("token") },
+  headers: { Accept: "*/*" },
 });
+
+export default instance;
